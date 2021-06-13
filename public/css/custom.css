@@ -1,0 +1,397 @@
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div {
+    font-family: 'Raleway', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.revinew_right_list {
+    list-style: none;
+}
+
+.revinew_right_list li {
+    color: white;
+    padding: 10px 10px;
+    background-color: #002060;
+    margin-bottom: 2px;
+    font-size: 13px;
+}
+
+.revinew_left_list {
+    list-style: none;
+}
+
+.revinew_left_list li {
+    font-size: 13px;
+    padding: 1px 10px;
+    margin-bottom: 2px;
+}
+
+
+/* Revenue Box by country-start */
+
+.box {
+    background-color: #EDEDED;
+    border: 2px solid #5B9BD5;
+    border-radius: 5%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+    font-size: 12px;
+}
+
+.input-field {
+    height: 70% !important;
+}
+
+.box-rev {
+    background-color: #FFF2CC;
+    border: 2px solid #5B9BD5;
+    border-radius: 5%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+}
+
+.sub-box {
+    background-color: #5B9BD5;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+
+/* .single-field{
+  margin-bottom: 10px;
+} */
+
+.single-field-rev {
+    margin-bottom: 10px;
+}
+
+.lbl {
+    background-color: #5B9BD5;
+    color: white;
+    display: block;
+    padding: 6px 14px;
+}
+
+.price-txt {
+    border: 2px solid #5B9BD5;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+.row-price {
+    padding: 14px;
+}
+
+.row-unitsold {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.col-unitsold {
+    background-color: #5B9BD5;
+    padding: 10px;
+    /* text-align: center; */
+    color: white
+}
+
+.row-title {
+    text-align: center;
+}
+
+
+/* .box-rev > .row{
+  padding: 10px
+} */
+
+.input_unitsold {
+    width: 60% !important;
+    float: left !important;
+}
+
+.revenue_radio_box {
+    padding-left: 15px;
+}
+
+.revenue_radio {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+/* Revenue Box by country-end */
+
+
+/* Popup Modal */
+
+.alert_img {
+    height: 50px;
+    width: 50px;
+    display: inline;
+}
+
+
+/* Revenue Page */
+
+.markUp_slider {
+    width: 90px !important;
+}
+
+
+/* Cash-flow-statement */
+
+.expense_title {
+    background-color: #009968;
+    /* margin-bottom: 5px; */
+    padding: 5px 10px;
+    /* margin-bottom: 5px; */
+    /* margin-right: 20%; */
+}
+
+.expense_item_box {
+    width: 100%;
+    border: 1px solid rgb(224, 224, 224);
+    padding: 10px 5px;
+}
+
+.revinew_right_list li {
+    cursor: pointer;
+}
+
+.revinew_left_list>li {
+    cursor: pointer;
+}
+
+.item_list {
+    position: fixed;
+    width: 300px;
+    padding: 5px;
+    background-color: #F4F5F7;
+}
+
+
+/* course-point page : Progress */
+
+progress[value] {
+    /* Reset the default appearance */
+    /* -webkit-appearance: none; */
+    /* appearance: none; */
+    width: 100%;
+    height: 20px;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    -webkit-animation: animate-stripes 5s linear infinite;
+    animation: animate-stripes 5s linear infinite;
+}
+
+progress[value]::-webkit-progress-value {
+    /* background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #09c, #f44); */
+    background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #09c, rgb(19, 200, 255));
+    border-radius: 2px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+@-webkit-keyframes animate-stripes {
+    100% {
+        background-position: -100px 0px;
+    }
+}
+
+@keyframes animate-stripes {
+    100% {
+        background-position: -100px 0px;
+    }
+}
+
+progress[value]::-webkit-progress-value::before {
+    content: '80%';
+    position: absolute;
+    right: 0;
+    top: -125%;
+}
+
+.progress-bar-container {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.progress-custom {
+    position: absolute;
+}
+
+.progress-inner-label {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* Decision drive submit button */
+
+.submit_btn_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 50px;
+}
+
+.submit_btn {
+    cursor: pointer;
+    padding: 8px 16px 8px 16px;
+    font-size: 25px;
+    z-index: 1;
+    background-image: linear-gradient( 130deg, #5EFCE8 10%, #736EFE 100%);
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+
+
+/* .submit_btn:hover {
+    margin-right: -50px;
+} */
+
+.iconwa {
+    position: relative;
+    top: 14px;
+    left: 10px;
+    z-index: 1;
+}
+
+.white {
+    color: white;
+}
+
+
+/* Next-previous-start */
+
+
+/* body {
+    background-color: #000;
+} */
+
+.arrow {
+    position: fixed !important;
+}
+
+#arrow_next {
+    -webkit-transition: border 0.2s linear;
+    -moz-transition: border 0.2s linear;
+    -ms-transition: border 0.2s linear;
+    -o-transition: border 0.2s linear;
+    transition: border 0.2s linear;
+    text-decoration: none;
+    line-height: 0;
+    margin-top: -100px;
+    font-size: 40px;
+    position: absolute;
+    height: 0;
+    right: 0;
+    top: 50%;
+    border-bottom: 100px solid transparent;
+    border-top: 100px solid transparent;
+    border-right: 150px solid #0AF;
+}
+
+#arrow_next>span {
+    -webkit-transition: margin 0.1s linear;
+    -moz-transition: margin 0.1s linear;
+    -ms-transition: margin 0.1s linear;
+    -o-transition: margin 0.1s linear;
+    transition: margin 0.1s linear;
+    font-family: "Open Sans", "Courier New", Courier, monospace;
+    line-height: 0;
+    margin-left: 65px;
+    margin-top: -1px;
+    position: absolute;
+    display: block;
+    color: white;
+    height: 0;
+}
+
+#arrow_next:hover {
+    border-right-color: #333;
+}
+
+#arrow_next:hover>span {
+    margin-left: 75px;
+}
+
+#arrow_previous {
+    -webkit-transition: border 0.2s linear;
+    -moz-transition: border 0.2s linear;
+    -ms-transition: border 0.2s linear;
+    -o-transition: border 0.2s linear;
+    transition: border 0.2s linear;
+    text-decoration: none;
+    line-height: 0;
+    margin-top: -100px;
+    font-size: 40px;
+    position: absolute;
+    height: 0;
+    left: 0;
+    top: 50%;
+    border-bottom: 100px solid transparent;
+    border-top: 100px solid transparent;
+    border-left: 150px solid #0AF;
+}
+
+#arrow_previous>span {
+    -webkit-transition: margin 0.1s linear;
+    -moz-transition: margin 0.1s linear;
+    -ms-transition: margin 0.1s linear;
+    -o-transition: margin 0.1s linear;
+    transition: margin 0.1s linear;
+    font-family: "Open Sans", "Courier New", Courier, monospace;
+    line-height: 0;
+    margin-left: -130px;
+    margin-top: -1px;
+    margin-right: 65px;
+    position: absolute;
+    display: block;
+    color: white;
+    height: 0;
+}
+
+#arrow_previous:hover {
+    border-left-color: #333;
+}
+
+#arrow_previous:hover>span {
+    margin-left: -140px;
+}
+
+
+/* Next-previous-end */

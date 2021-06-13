@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewBox="0 0 40 48">
+  <g id="Summary" transform="translate(-4)">
+    <g id="Group_2036" data-name="Group 2036" transform="translate(0 -1004.362)">
+      <path id="Path_8415" data-name="Path 8415" d="M5,5A1,1,0,0,0,4,6V47a1,1,0,0,0,1,1H39a1,1,0,0,0,1-1V16a1,1,0,0,0-.219-.623l-8-10A1,1,0,0,0,31,5ZM6,7H30v9.01A1,1,0,0,0,31,17h7V46H6ZM32,8.852l4.936,6.17H32Z" transform="translate(0 1004.362)" fill="#fe8400" fill-rule="evenodd"/>
+      <path id="Path_8416" data-name="Path 8416" d="M9,0A1,1,0,0,0,8,1V6a1,1,0,1,0,2,0V2H34v9.016a.973.973,0,0,0,.643.92l.023.01q.04.013.08.023t.1.02h.01q.04.006.08.01t.082,0H42V41H39.115a1,1,0,1,0,0,2H43a1,1,0,0,0,1-1V11a1,1,0,0,0-.219-.623l-8-10A1,1,0,0,0,35,0ZM36,3.85,40.92,10H36Z" transform="translate(0 1004.362)" fill="#fe8400" fill-rule="evenodd"/>
+      <path id="Path_8417" data-name="Path 8417" d="M12.014,1025.361a1,1,0,1,0,0,2H31.986a1,1,0,1,0,0-2Z" fill="#fe8400" fill-rule="evenodd"/>
+      <path id="Path_8418" data-name="Path 8418" d="M12.014,1031.361a1,1,0,1,0,0,2H31.986a1,1,0,1,0,0-2Z" fill="#fe8400" fill-rule="evenodd"/>
+      <path id="Path_8419" data-name="Path 8419" d="M12.014,1037.361a1,1,0,1,0,0,2H31.986a1,1,0,1,0,0-2Z" fill="#fe8400" fill-rule="evenodd"/>
+      <path id="Path_8420" data-name="Path 8420" d="M12.014,1043.361a1,1,0,1,0,0,2H31.986a1,1,0,1,0,0-2Z" fill="#fe8400" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
