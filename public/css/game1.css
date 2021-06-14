@@ -616,7 +616,7 @@ margin-left: 0;
 }
 .decision_driven .box .box-header p{
     color: #fff !important;
-    font-size: 28px;
+    font-size: 1rem;
     margin: 0;
     font-weight: bold;
 }
@@ -802,6 +802,21 @@ margin-left: 0;
 /* Financial Statement page -End */
 
 
+/* Decision Driven -start */
+.canvas_400X400{
+    /* height: 100% !important; */
+    padding: 0 20px;
+}
+.mb-20{
+    margin-bottom: 30px;
+}
+.dd_revenue{
+    width: 50%;
+}
+.dd_revenue_select{
+    width: 30%;
+}
+/* Decision Driven -end */
 
 
 

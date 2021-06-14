@@ -1,6 +1,6 @@
 <div class="details">
     <div class="row">
-        <div class=" col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-20 ">
             <div class="box">
                 <div class="box-body">
                     <p class="txt">Net profit</p>
@@ -8,66 +8,74 @@
                 </div>
             </div>
         </div>
-        <div class=" col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-20 ">
             <div class="box">
                 <div class="box-header">
                     <p>Market share</p>
                 </div>
                 <div class="box-body">
-                    <canvas id="PieChartDicisionDriven" width="400" height="400"></canvas>
+                    <canvas id="PieChartDicisionDriven" class="canvas_400X400"></canvas>
                 </div>
             </div>
         </div>
-        <div class=" col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-20 ">
             <div class="box">
-                <div class="box-header">
-                    <p>Revenue / 914</p>
+                <div class="box-header dd">
+                    <p class="dd_revenue">Revenue / 914</p>
+                    <select class="custom-select dd_revenue_select" id="marketPlace" onchange="updateRevenueChart()">
+                        <option value="0" selected>Marketplace...</option>
+                        @foreach ($marketPlaces as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                        <option value="0">All</option>
+                    </select>
                 </div>
                 <div class="box-body">
-
+                    <canvas id="BoundaryDicisionDriven" class="canvas_400X400"></canvas>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class=" col-md-4">
+
+
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-20 ">
             <div class="box">
                 <div class="box-header">
                     <p>Cost</p>
                 </div>
                 <div class="box-body">
-
+                    <canvas id="myChart" class="canvas_400X400"></canvas>
                 </div>
             </div>
         </div>
-        <div class=" col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-20 ">
             <div class="box">
                 <div class="box-header">
                     <p>Unit sales in countries</p>
                 </div>
                 <div class="box-body">
-
+                    <canvas id="unitSales" class="canvas_400X400"></canvas>
                 </div>
             </div>
         </div>
-        <div class=" col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-20 ">
             <div class="box">
                 <div class="box-header">
                     <p>Pricing vs. Competition</p>
                 </div>
                 <div class="box-body">
-
+                    <canvas id="pricingvscompetition_line" class="canvas_400X400"></canvas>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
+
+
         <div class="col-md-6">
             <div class="box">
                 <div class="box-header">
                     <p>Bangladesh: <span class="pc">Pricing vs. Competition</span></p>
                 </div>
                 <div class="box-body">
+                    <canvas id="pricingvscompetition_bd_bar"></canvas>
                 </div>
             </div>
         </div>
@@ -77,10 +85,13 @@
                     <p>Nepal: <span class="pc">Pricing vs. Competition</span></p>
                 </div>
                 <div class="box-body">
+                    <canvas id="pricingvscompetition_np_bar"></canvas>
                 </div>
             </div>
         </div>
+
     </div>
+
 
     <div class="row">
         <div class="col-12">
@@ -93,176 +104,6 @@
 </div>
 
 <div>
-    {{-- @section('nextUrl', $nextUrl)
-    @section('previousUrl', $previousUrl) --}}
-    <div class="row">
-        <div class="col-md-4">
-            <div>
-                <div class="card">
-                    <div class="card-body">
-                        {{-- <canvas id="PieChartDicisionDriven" width="400" height="400"></canvas> --}}
-
-                        <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Market share
-
-                        <p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        {{-- Revenue --}}
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group mb-3">
-                                {{-- <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                </div> --}}
-                                <select class="custom-select" id="marketPlace" onchange="updateRevenueChart()">
-                                    <option value="0" selected>Marketplace...</option>
-                                    @foreach ($marketPlaces as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                    <option value="0">All</option>
-                                </select>
-                            </div>
-                        </div>
-                        {{-- <div class="col-md-4">
-                            <div class="input-group mb-3"> --}}{{-- <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                </div> --}}{{-- <select class="custom-select" id="product" wire:model="selectedMarketPlace">
-                                    <option value="0" selected>Product...</option>
-                                    @foreach ($products as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @endforeach
-                                    <option value="0">All</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group mb-3"> --}}{{-- <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                </div> --}}{{-- <select class="custom-select" id="month">
-                                    <option value="0" selected >months...</option>
-                                    @foreach ($months as $item)
-                                        <option value="{{$item}}">Months {{$item}}</option>
-                                    @endforeach
-                                    <option value="0">All</option>
-                                </select>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-                <div class="card-body">
-                    <canvas id="BoundaryDicisionDriven" width="400" height="400"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">
-                        Revenue {{ $selectedMarketPlace }} / {{ $bn_total_revenue }}
-                    <p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="myChart" width="400" height="400"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Cost
-
-                    <p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!--end graph -->
-
-
-    <!--start graph -->
-    <div class="row" style="margin-top: 30px;">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="unitSales" width="400" height="400"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Unit sales in
-                        countries
-
-                    <p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <center>
-                        <h2 class="display-1">{{ $this->net_income }}</h2>
-                    </center>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Net profit
-
-                    <p>
-                </div>
-            </div>
-        </div>
-
-        {{-- Pricing vs. Competition Chart --}}
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="pricingvscompetition_line" width="400" height="400"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Pricing vs.
-                        Competition
-                    <p>
-                </div>
-            </div>
-        </div>
-        {{-- end of row --}}
-    </div>
-
-
-    {{-- Pricing vs. Competition Chart --}}
-    <div class="row" style="margin-top: 25px">
-
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="pricingvscompetition_bd_bar" width="400" height="300"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:16px">
-                        <span style="font-size:22px">
-                            Bangladesh:
-                        </span>
-                        Pricing vs. Competition
-                    <p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="pricingvscompetition_np_bar" width="400" height="300"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:16px">
-                        <span style="font-size:22px">
-                            Nepal:
-                        </span>
-                        Pricing vs. Competition
-                    <p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row submit_btn_container">
-        <Button class="submit_btn lnr lnr-arrow-right white " onclick="popup()">Submit</Button>
-    </div>
-
-
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -376,12 +217,12 @@
                     data: [{{ $bn_total_revenue }}, {{ $np_total_revenue }}],
                     // barThickness: 50,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 206, 86, 0.8)',
-                        'rgba(75, 192, 192, 0.8)',
-                        'rgba(153, 102, 255, 0.8)',
-                        'rgba(255, 159, 64, 0.8)'
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
