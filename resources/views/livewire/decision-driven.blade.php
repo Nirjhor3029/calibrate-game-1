@@ -1,31 +1,115 @@
-<div>
-{{-- Success is as dangerous as failure. --}}
-@section('nextUrl',$nextUrl)
-@section('previousUrl',$previousUrl)
-<!--start graph 1st row -->
+<div class="details">
     <div class="row">
-        {{-- Market Share --}}
-        <div class="col-md-4">
-            {{-- @livewire('chart.decison-driven-market-share') --}}
-            {{-- <livewire:chart.decison-driven-market-share/> --}}
-            {{-- {{$MARKET_TOTAL_SELL_VALUE}} --}}
+        <div class=" col-md-4">
+            <div class="box">
+                <div class="box-body">
+                    <p class="txt">Net profit</p>
+                    <p class="number">{{ $this->net_income }}</p>
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4">
+            <div class="box">
+                <div class="box-header">
+                    <p>Market share</p>
+                </div>
+                <div class="box-body">
+                    <canvas id="PieChartDicisionDriven" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4">
+            <div class="box">
+                <div class="box-header">
+                    <p>Revenue / 914</p>
+                </div>
+                <div class="box-body">
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-4">
+            <div class="box">
+                <div class="box-header">
+                    <p>Cost</p>
+                </div>
+                <div class="box-body">
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4">
+            <div class="box">
+                <div class="box-header">
+                    <p>Unit sales in countries</p>
+                </div>
+                <div class="box-body">
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-4">
+            <div class="box">
+                <div class="box-header">
+                    <p>Pricing vs. Competition</p>
+                </div>
+                <div class="box-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <p>Bangladesh: <span class="pc">Pricing vs. Competition</span></p>
+                </div>
+                <div class="box-body">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <p>Nepal: <span class="pc">Pricing vs. Competition</span></p>
+                </div>
+                <div class="box-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <a href="" class="btn btn-submit">Submit</a>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div>
+    {{-- @section('nextUrl', $nextUrl)
+    @section('previousUrl', $previousUrl) --}}
+    <div class="row">
+        <div class="col-md-4">
             <div>
                 <div class="card">
                     <div class="card-body">
-                        <canvas id="PieChartDicisionDriven" width="400" height="400"></canvas>
+                        {{-- <canvas id="PieChartDicisionDriven" width="400" height="400"></canvas> --}}
 
                         <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Market share
 
                         <p>
                     </div>
                 </div>
-
-
             </div>
 
         </div>
-
 
         {{-- Revenue --}}
         <div class="col-md-4">
@@ -40,18 +124,16 @@
                                 <select class="custom-select" id="marketPlace" onchange="updateRevenueChart()">
                                     <option value="0" selected>Marketplace...</option>
                                     @foreach ($marketPlaces as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                     <option value="0">All</option>
                                 </select>
                             </div>
                         </div>
-                        {{--<div class="col-md-4">
-                            <div class="input-group mb-3">
-                                --}}{{-- <div class="input-group-prepend">
+                        {{-- <div class="col-md-4">
+                            <div class="input-group mb-3"> --}}{{-- <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                </div> --}}{{--
-                                <select class="custom-select" id="product" wire:model="selectedMarketPlace">
+                                </div> --}}{{-- <select class="custom-select" id="product" wire:model="selectedMarketPlace">
                                     <option value="0" selected>Product...</option>
                                     @foreach ($products as $item)
                                         <option value="{{$item->id}}">{{$item->name}}</option>
@@ -61,11 +143,9 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="input-group mb-3">
-                                --}}{{-- <div class="input-group-prepend">
+                            <div class="input-group mb-3"> --}}{{-- <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                </div> --}}{{--
-                                <select class="custom-select" id="month">
+                                </div> --}}{{-- <select class="custom-select" id="month">
                                     <option value="0" selected >months...</option>
                                     @foreach ($months as $item)
                                         <option value="{{$item}}">Months {{$item}}</option>
@@ -73,13 +153,14 @@
                                     <option value="0">All</option>
                                 </select>
                             </div>
-                        </div>--}}
+                        </div> --}}
                     </div>
                 </div>
                 <div class="card-body">
                     <canvas id="BoundaryDicisionDriven" width="400" height="400"></canvas>
                     <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">
-                        Revenue {{$selectedMarketPlace}} / {{$bn_total_revenue}} <p>
+                        Revenue {{ $selectedMarketPlace }} / {{ $bn_total_revenue }}
+                    <p>
                 </div>
             </div>
         </div>
@@ -118,7 +199,9 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <center><h2 class="display-1">{{$this->net_income}}</h2></center>
+                    <center>
+                        <h2 class="display-1">{{ $this->net_income }}</h2>
+                    </center>
                     <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Net profit
 
                     <p>
@@ -140,33 +223,10 @@
         {{-- end of row --}}
     </div>
 
-    {{-- <div class="row" style="margin-top: 25px">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="pricingvscompetition" width="400" height="150"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Pricing vs.
-                        Competition
-                    <p>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="pricingvscompetition_np" width="400" height="150"></canvas>
-                    <p style="margin-top:10px;text-align:center;font-weight:bolder;font-size:22px">Pricing vs.
-                        Competition
-                    <p>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!--end graph -->
-
+    {{-- Pricing vs. Competition Chart --}}
     <div class="row" style="margin-top: 25px">
-        {{-- Pricing vs. Competition Chart --}}
+
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
@@ -199,30 +259,30 @@
 
 
     <div class="row submit_btn_container">
-        {{-- <a href="{{ route('submitGame') }}"> --}}
-            <Button class="submit_btn lnr lnr-arrow-right white " onclick="popup()">Submit</Button>
-        {{-- </a> --}}
+        <Button class="submit_btn lnr lnr-arrow-right white " onclick="popup()">Submit</Button>
     </div>
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Finish The Game</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-2">
-                            <img src="https://freedesignfile.com/upload/2017/12/Alert-Icon.jpg" class="alert_img" alt="">
+                            <img src="https://freedesignfile.com/upload/2017/12/Alert-Icon.jpg" class="alert_img"
+                                alt="">
                         </div>
                         <div class="col-sm-10">
                             After Submit your result you'll <b>redirect to dashboard</b>. <br>
-                            And you <b>can not edit</b>  this game ans.
+                            And you <b>can not edit</b> this game ans.
                         </div>
                     </div>
 
@@ -240,9 +300,9 @@
 
     <script>
         function popup() {
-            // alert("Can’t insert any value here.This is inconsistent to the case.");
             $('#exampleModal').modal('show');
         }
+
     </script>
 
 
@@ -252,7 +312,9 @@
             type: 'pie',
             data: {
                 datasets: [{
-                    data: [{{$marketShareValues[0]}}, {{$marketShareValues[1]}}, {{$marketShareValues[2]}}],
+                    data: [{{ $marketShareValues[0] }}, {{ $marketShareValues[1] }},
+                        {{ $marketShareValues[2] }}
+                    ],
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.8)',
                         'rgba(255, 99, 132, 0.8)',
@@ -273,9 +335,9 @@
 
                 // These labels appear in the legend and in the tooltips when hovering different arcs
                 labels: [
-                    "{{$marketShareLabels[0]}}",
-                    "{{$marketShareLabels[1]}}",
-                    "{{$marketShareLabels[2]}}",
+                    "{{ $marketShareLabels[0] }}",
+                    "{{ $marketShareLabels[1] }}",
+                    "{{ $marketShareLabels[2] }}",
                 ]
             },
             options: {
@@ -284,7 +346,7 @@
                         ticks: {
                             // beginAtZero: false,
                             min: 1,
-                            max:{{$MARKET_TOTAL_SELL_VALUE}},
+                            max: {{ $MARKET_TOTAL_SELL_VALUE }},
                         },
                         gridLines: {
                             // display: true,
@@ -292,8 +354,8 @@
                             // drawTicks: false,
                         }
                     }],
-                    
-                    
+
+
                 },
 
             }
@@ -303,8 +365,6 @@
 
 
     <script>
-
-
         /******************* revenue Decision Driven *****************/
         var bchart = document.getElementById('BoundaryDicisionDriven').getContext('2d');
         var mylineChart = new Chart(bchart, {
@@ -313,7 +373,7 @@
                 labels: ['Bangladesh', 'Nepal'],
                 datasets: [{
                     label: 'Total Revenue',
-                    data: [{{$bn_total_revenue}}, {{$np_total_revenue}}],
+                    data: [{{ $bn_total_revenue }}, {{ $np_total_revenue }}],
                     // barThickness: 50,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.8)',
@@ -363,10 +423,9 @@
             type: 'bar',
             data: {
                 labels: ['Bangladesh', 'Nepal'],
-                datasets: [
-                    {
+                datasets: [{
                         label: 'Total Production Cost',
-                        data: [{{$bn_total_cost}}, {{$np_total_cost}}],
+                        data: [{{ $bn_total_cost }}, {{ $np_total_cost }}],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.8)',
                             'rgba(54, 162, 235, 0.8)',
@@ -379,10 +438,10 @@
                         ],
                         borderWidth: 1
                     },
-                    
-                
+
+
                 ],
-                
+
             },
             options: {
                 scales: {
@@ -395,7 +454,7 @@
                             drawOnChartArea: false,
                             // drawTicks: false,
                         }
-                        
+
                     }],
                     xAxes: [{
                         ticks: {
@@ -406,9 +465,9 @@
                             drawOnChartArea: false,
                             // drawTicks: false,
                         }
-                        
+
                     }],
-                    
+
                 },
             }
         });
@@ -420,10 +479,9 @@
         let compitision = new Chart(unitSales, {
             type: 'line',
             data: {
-                datasets: [
-                    {
+                datasets: [{
                         label: 'Bangladesh',
-                        data: [{{$bn_unit_sales}}],
+                        data: [{{ $bn_unit_sales }}],
                         type: 'line',
                         backgroundColor: "transparent",
                         borderColor: "green"
@@ -431,7 +489,7 @@
                     },
                     {
                         label: 'Nepal',
-                        data: [{{$np_unit_sales}}],
+                        data: [{{ $np_unit_sales }}],
                         type: 'line',
                         backgroundColor: "transparent",
                         borderColor: "blue"
@@ -459,10 +517,9 @@
         let price_compitision_line = new Chart(pricingvscompetition_line, {
             type: 'line',
             data: {
-                datasets: [
-                    {
+                datasets: [{
                         label: 'Price',
-                        data: [{{$price}}],
+                        data: [{{ $price }}],
                         type: 'line',
                         backgroundColor: "transparent",
                         borderColor: "green"
@@ -470,7 +527,7 @@
                     },
                     {
                         label: 'Competitors price',
-                        data: [{{$competitor}}],
+                        data: [{{ $competitor }}],
                         type: 'line',
                         backgroundColor: "transparent",
                         borderColor: "blue"
@@ -493,10 +550,10 @@
         });
         /******************* Competitors Vs Price graph Decision Driven-end *****************/
 
-        // console.log({{$price}});
+        // console.log({{ $price }});
         /******************* cost graph Decision Driven *****************/
 
-        
+
 
 
         // Test
@@ -505,18 +562,17 @@
             type: 'bar',
             data: {
                 labels: ['A', 'B'],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Price",
-                        barThickness:25,
+                        barThickness: 25,
                         backgroundColor: "rgba(54, 162, 235, 0.8)",
-                        data: [{{$price_bd}}]
+                        data: [{{ $price_bd }}]
                     },
                     {
                         label: "Comp Price",
-                        barThickness:20,
+                        barThickness: 20,
                         backgroundColor: "rgba(255, 99, 132, 0.8)",
-                        data: [{{$compt_bd}}]
+                        data: [{{ $compt_bd }}]
                     },
                 ]
             },
@@ -542,18 +598,17 @@
             type: 'bar',
             data: {
                 labels: ['A', 'B'],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Price",
-                        barThickness:25,
+                        barThickness: 25,
                         backgroundColor: "rgba(54, 162, 235, 0.8)",
-                        data: [{{$price_np}}]
+                        data: [{{ $price_np }}]
                     },
                     {
                         label: "Comp Price",
-                        barThickness:25,
+                        barThickness: 25,
                         backgroundColor: "rgba(255, 99, 132, 0.8)",
-                        data: [{{$compt_np}}]
+                        data: [{{ $compt_np }}]
                     },
                 ]
             },
@@ -576,11 +631,10 @@
     </script>
 
     <script>
-
         function updateRevenueChart() {
             $.ajax({
                 url: "/update-revenue-chart/" + $("#marketPlace").val() + "/" + 1 + "/" + 1,
-                success: function (result) {
+                success: function(result) {
                     console.log(result.data);
                     mylineChart.data = {
                         labels: result.data.labels,
@@ -604,7 +658,6 @@
                 }
             });
         };
-
 
     </script>
 

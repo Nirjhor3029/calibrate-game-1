@@ -97,6 +97,8 @@
     </main>
 
     @livewireScripts
+
+
 </body>
 
 </html>
