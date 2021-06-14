@@ -24,16 +24,43 @@
             </div>
         </div>
 
-        @livewire('revenue')
+        <div class="details">
+            <div class="revenue-tabs">
+                <a href="javascript:void(0)" id="btn-bd" class="btn btn-revenue-tabs btn-bd bd-active">Revenue BD</a>
+                <a href="javascript:void(0)" id="btn-np" class="btn btn-revenue-tabs btn-np">Revenue NP</a>
+                <a href="javascript:void(0)" id="btn-chart" class="btn btn-revenue-tabs btn-chart">Revenue
+                    Chart</a>
+            </div>
+
+            {{-- BD --}}
+            <div class="bd">
+                @livewire('revenue')
+            </div>
+
+
+
+            {{-- NP --}}
+            <div class="np">
+                @livewire('revenue-np')
+            </div>
+
+            {{-- Chart --}}
+            <div class="revenue-chart">
+                @livewire('revenue-other')
+            </div>
+
+        </div>
+
+
 
 
 
         <div class="prev_next_div">
-            <a href="" class="btn btn-game1 btn-next">
+            <a href="{{ URL::to('/budgeting') }}" class="btn btn-game1 btn-next">
                 Previous
                 <img class="icon" src="{{ 'assets/images/icons/' }}/Previous.svg" alt="Previous icon">
             </a>
-            <a href="" class="btn btn-game1 btn-next">
+            <a href="{{ URL::to('/financial-statement') }}" class="btn btn-game1 btn-next">
                 Next
                 <img class="icon" src="{{ 'assets/images/icons/' }}/Next.svg" alt="Next icon">
             </a>
@@ -51,75 +78,75 @@
 
             // BD - input number
             // Product-A
-            $('#bd_A_pc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#bd_A_opx_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#bd_A_tc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#bd_A_cp_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            // Product b
-            $('#bd_B_pc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#bd_B_opx_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#bd_B_tc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#bd_B_cp__handleCounter  ').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
+            // $('#bd_A_pc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_A_opx_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_A_tc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_A_cp_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // // Product b
+            // $('#bd_B_pc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_B_opx_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_B_tc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_B_cp__handleCounter  ').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
 
             // NP - input number
             // Product-A
-            $('#np_A_pc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#np_A_opx_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#np_A_tc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#np_A_cp_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            // Product b
-            $('#np_B_pc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#np_B_opx_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#np_B_tc_handleCounter').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
-            $('#np_B_cp__handleCounter  ').handleCounter({
-                minimum: 0,
-                maximize: null,
-            })
+            // $('#np_A_pc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_A_opx_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_A_tc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_A_cp_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // // Product b
+            // $('#np_B_pc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_B_opx_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_B_tc_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_B_cp__handleCounter  ').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
 
 
 
@@ -166,7 +193,7 @@
 
                 let bd = $(".bd");
                 let np = $(".np");
-                let chart = $(".chart");
+                let chart = $(".revenue-chart");
 
                 btnBd.click(function() {
                     let that = $(this);

@@ -20,7 +20,19 @@
         </div>
 
 
-        <livewire:budgeting />
+        {{-- <livewire:budgeting /> --}}
+        @livewire('budgeting')
+
+        <div class="prev_next_div">
+            <a href="{{ URL::to('/recruitment') }}" class="btn btn-game1 btn-next">
+                Previous
+                <img class="icon" src="{{ 'assets/images/icons/' }}/Previous.svg" alt="Previous icon">
+            </a>
+            <a href="{{ URL::to('/revenue') }}" class="btn btn-game1 btn-next">
+                Next
+                <img class="icon" src="{{ 'assets/images/icons/' }}/Next.svg" alt="Next icon">
+            </a>
+        </div>
 
 
         <script>

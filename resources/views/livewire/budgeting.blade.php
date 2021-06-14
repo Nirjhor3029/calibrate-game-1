@@ -102,16 +102,7 @@
         </div>
     </div>
 
-    <div class="prev_next_div">
-        <a href="" class="btn btn-game1 btn-next">
-            Previous
-            <img class="icon" src="{{ 'assets/images/icons/' }}/Previous.svg" alt="Previous icon">
-        </a>
-        <a href="" class="btn btn-game1 btn-next">
-            Next
-            <img class="icon" src="{{ 'assets/images/icons/' }}/Next.svg" alt="Next icon">
-        </a>
-    </div>
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

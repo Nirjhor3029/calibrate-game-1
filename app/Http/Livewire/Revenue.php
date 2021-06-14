@@ -395,4 +395,118 @@ class Revenue extends Component
     {
         return round($value, 2);
     }
+
+    public function plus($country, $product, $noOfFields)
+    {
+        if ($country == "bd") {
+            if ($product == "a") {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->bn_a_productCost++;
+                        break;
+                    case '4':
+                        $this->bn_a_competitorsPrice++;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->bn_b_productCost++;
+                        break;
+                    case '4':
+                        $this->bn_b_competitorsPrice++;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+        } elseif ($country == "np") {
+            if ($product == "a") {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->np_a_productCost++;
+                        break;
+                    case '4':
+                        $this->np_a_competitorsPrice++;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->np_b_productCost++;
+                        break;
+                    case '4':
+                        $this->np_b_competitorsPrice++;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+        }
+    }
+
+    public function minus($country, $product, $noOfFields)
+    {
+        if ($country == "bd") {
+            if ($product == "a") {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->bn_a_productCost--;
+                        break;
+                    case '4':
+                        $this->bn_a_competitorsPrice--;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->bn_b_productCost--;
+                        break;
+                    case '4':
+                        $this->bn_b_competitorsPrice--;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+        } elseif ($country == "np") {
+            if ($product == "a") {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->np_a_productCost--;
+                        break;
+                    case '4':
+                        $this->np_a_competitorsPrice--;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                switch ($noOfFields) {
+                    case '1':
+                        $this->np_b_productCost--;
+                        break;
+                    case '4':
+                        $this->np_b_competitorsPrice--;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+        }
+    }
 }

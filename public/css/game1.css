@@ -544,6 +544,37 @@ margin-left: 0;
     cursor: pointer;
   }
 
+
+
+  /* Revenue Chart */
+
+  .revenue-chart{
+      display: none;
+  }
+  .revenue_row{
+    flex-wrap: nowrap !important;
+    padding: 0px 15px;
+  }
+  .revenue_row .revenue_row_chart{
+      background-color: #fff;
+      margin-right: 10px;
+      padding: 10px;
+
+  }
+  .revenue_row .revenue_row_fields{
+    background-color: #fff;
+    padding: 40px 50px;
+  }
+  .revenue_row .single-field-rev{
+      margin-top: 10px;
+  }
+
+  .handle-counter input{
+      width: 100%;
+  }
+
+
+
 /* Revenue Page -End */
 
 

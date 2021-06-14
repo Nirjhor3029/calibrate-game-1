@@ -26,6 +26,10 @@
     <script src="{{ asset('js') }}/handleCounter.js"></script>
 
 
+    {{-- Livewire chart --}}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+
 </head>
 
 <body>

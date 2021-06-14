@@ -20,6 +20,17 @@
 
         @livewire('recruitment')
 
+        <div class="prev_next_div">
+            <a href="{{ URL::to('/overview') }}" class="btn btn-game1 btn-next">
+                Previous
+                <img class="icon" src="{{ 'assets/images/icons/' }}/Previous.svg" alt="Previous icon">
+            </a>
+            <a href="{{ URL::to('/budgeting') }}" class="btn btn-game1 btn-next">
+                Next
+                <img class="icon" src="{{ 'assets/images/icons/' }}/Next.svg" alt="Next icon">
+            </a>
+        </div>
+
         <script>
             // $('#hr_handleCounter').handleCounter({
             //     minimum: 0,
