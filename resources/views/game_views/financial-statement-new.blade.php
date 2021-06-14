@@ -203,11 +203,11 @@
 
 
             <div class="prev_next_div">
-                <a href="" class="btn btn-game1 btn-next">
+                <a href="{{ URL::to('/revenue') }}" class="btn btn-game1 btn-next">
                     Previous
                     <img class="icon" src="{{ asset('assets/images/icons') }}/previous.svg" alt="Previous icon">
                 </a>
-                <a href="" class="btn btn-game1 btn-next">
+                <a href="{{ URL::to('/decision-driven') }}" class="btn btn-game1 btn-next">
                     Next
                     <img class="icon" src="{{ asset('assets/images/icons') }}/Next.svg" alt="Next icon">
                 </a>
