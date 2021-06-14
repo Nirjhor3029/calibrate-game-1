@@ -45,7 +45,7 @@ class RevenueNp extends Component
 
     public $previousUrl = "/revenue";
     public $nextUrl = "/revenue-other";
-  
+
 
     // code for check null/empty value and show error message
     public $check_null = 1;
@@ -76,7 +76,7 @@ class RevenueNp extends Component
             $this->calculateData();
             $this->updateDB();
         }
-        
+
         return view('livewire.revenue-np');
     }
 
@@ -168,7 +168,7 @@ class RevenueNp extends Component
                         $revenue->user_id = $this->userId;
                         $revenue->game_id = $this->gameId;
 
-                       
+
 
 
 
@@ -186,8 +186,6 @@ class RevenueNp extends Component
                         }
 
                     }else{
-        //                    dd($revenue);
-
                         if(strtolower($marketPlace->name) == "nepal"){
 
                             if(strtolower($product->name) == "a"){
@@ -222,7 +220,7 @@ class RevenueNp extends Component
 
 
     public function calculateData(){
-        
+
         $this->np_a_totalCost = ceil($this->np_a_productCost+$this->np_a_opex);
         $this->np_b_totalCost = ceil($this->np_b_productCost+$this->np_b_opex);
 

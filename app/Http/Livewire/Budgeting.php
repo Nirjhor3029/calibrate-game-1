@@ -31,9 +31,9 @@ class Budgeting extends Component
     public $check_null = 1;
     public function updated($propertyName)
     {
-        if($this->$propertyName == ""){
+        if ($this->$propertyName == "") {
             $this->check_null = 0;
-        }else{
+        } else {
             $this->check_null = 1;
         }
     }
@@ -85,14 +85,14 @@ class Budgeting extends Component
 
     public function mount()
     {
-        if($this->check_null){
+        if ($this->check_null) {
             $bangladesh =  Budget::where(['user_id' => Auth::guard('web')->user()->id, 'game_id' => Session::get('game_id'), 'marketplace_id' => 1])->get()->first();
             $this->recruitment_bd = $bangladesh->recruitment;
             $this->manufacturing_bd = $bangladesh->manufacturing;
             $this->launch_bd = $bangladesh->launch;
             $this->other_bd = $bangladesh->other;
             $this->output_total_budget = $bangladesh->recruitment + $bangladesh->manufacturing + $bangladesh->launch + $bangladesh->other;
-    
+
             $nepalBudget = Budget::where(['user_id' => Auth::guard('web')->user()->id, 'game_id' => Session::get('game_id'), 'marketplace_id' => 2])->get()->first();
             $this->recruitment_np = $nepalBudget->recruitment;
             $this->manufacturing_np = $nepalBudget->manufacturing;
@@ -100,19 +100,51 @@ class Budgeting extends Component
             $this->other_np = $nepalBudget->other;
             $this->output_total_budget_np = $nepalBudget->recruitment + $nepalBudget->manufacturing + $nepalBudget->launch + $nepalBudget->other;
         }
-        
     }
 
+    public function plus($country, $noOfInputField)
+    {
+        if ($country == "bd") {
+            if ($noOfInputField == 3) {
+                $this->launch_bd++;
+            } elseif ($noOfInputField == 4) {
+                $this->other_bd++;
+            }
+        } else {
+            if ($noOfInputField == 3) {
+                $this->launch_np++;
+            } elseif ($noOfInputField == 4) {
+                $this->other_np++;
+            }
+        }
+    }
+
+    public function minus($country, $noOfInputField)
+    {
+        if ($country == "bd") {
+            if ($noOfInputField == 3) {
+                $this->launch_bd--;
+            } elseif ($noOfInputField == 4) {
+                $this->other_bd--;
+            }
+        } else {
+            if ($noOfInputField == 3) {
+                $this->launch_np--;
+            } elseif ($noOfInputField == 4) {
+                $this->other_np--;
+            }
+        }
+    }
 
 
 
     public function render()
     {
-        if($this->check_null){  
+        if ($this->check_null) {
             $this->calculateBdBudget();
             $this->calculateBdBudgetForNp();
         }
-        
+
         return view('livewire.budgeting');
     }
 }

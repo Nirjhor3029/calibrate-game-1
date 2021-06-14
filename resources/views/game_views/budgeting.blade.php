@@ -1,4 +1,70 @@
-<x-app-layout>
+@extends('layouts.game1_app')
+
+@section('content')
+    <div class="budgeting">
+        <div class="recruitment">
+            <div class="row title">
+                <div class="title-content col-sm-12 ">
+                    <div class="title-header">
+                        <img class="icon" src="{{ 'assets/images/icons/' }}/Budgeting.svg" alt="Summery icon">
+                        <h3>Budgeting</h3>
+                    </div>
+
+                    <p>
+                        You have total 15 BDT to launch Teaco. You need to decide how much would you spend in Bangladesh and
+                        in Nepal. Remember, Bangladesh has 3X more consumers than Nepal.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <livewire:budgeting />
+
+
+        <script>
+            // $('#bd_r_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_m_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_l_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#bd_o_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+
+
+            // $('#np_r_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_m_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_l_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+            // $('#np_o_handleCounter').handleCounter({
+            //     minimum: 0,
+            //     maximize: null,
+            // })
+
+        </script>
+    </div>
+
+@endsection
+
+{{-- <x-app-layout>
     @include('partials.subnavbar')
 
     <div class="py-12">
@@ -11,7 +77,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <livewire:budgeting/>
+
                     </div>
                 </div>
             </div>
@@ -19,4 +85,4 @@
     </div>
 
 
-</x-app-layout>
+</x-app-layout> --}}

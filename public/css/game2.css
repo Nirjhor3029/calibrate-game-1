@@ -563,7 +563,7 @@ nav {
 .selected_div {}
 
 .modal-body {
-    background-image: url('http://myfunnymemes.com/wp-content/uploads/2015/04/Doge-Meme-Lion-In-All-Its-Majestic-Glory.jpg');
+    /* background-image: url('http://myfunnymemes.com/wp-content/uploads/2015/04/Doge-Meme-Lion-In-All-Its-Majestic-Glory.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
