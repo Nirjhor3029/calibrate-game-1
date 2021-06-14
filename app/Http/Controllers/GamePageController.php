@@ -78,7 +78,6 @@ class GamePageController extends Controller
             $total_income = $total_revenue - $total_expenses;
             $revenueData = FinancialStatementItems::where(['financial_id' => $financial->id, 'type' => 'revenue'])->get();
             $expensesData = FinancialStatementItems::where(['financial_id' => $financial->id, 'type' => 'expenses'])->get();
-
         }
         return view('game_views.finalcial-statement', [
             'revenueData' => $revenueData,
@@ -118,15 +117,15 @@ class GamePageController extends Controller
             $revenueData = CashFlowStatementItems::where(['cash_flow_statement_id' => $financial->id, 'type' => 1])->get();
 
             $expensesData = CashFlowStatementItems::where(['cash_flow_statement_id' => $financial->id])->get();
-            $calculated_data = $expensesData->mapToGroups(function($item , $key){
+            $calculated_data = $expensesData->mapToGroups(function ($item, $key) {
                 return [$item->type => $item->value];
-            })->map(function ($item){
+            })->map(function ($item) {
                 return $item->sum();
             });
-        //    return([$expensesData, $calculated_data]);
+            //    return([$expensesData, $calculated_data]);
         }
 
-        
+
         // dd($total_expenses);
         return view('game_views.cash-flow-statement', [
             'revenueData' => $revenueData,
@@ -157,9 +156,9 @@ class GamePageController extends Controller
         $this->gameId = Session::get("game_id");
         $resultProcess = ResultProcess::where('user_id', $this->userId)->where('game_id', $this->gameId)->get();
 
-        if(count($resultProcess) ){
+        if (count($resultProcess)) {
             $result_done = 1;
-        }else{
+        } else {
             $result_done = 0;
         }
         // return $resultProcess;
@@ -173,15 +172,17 @@ class GamePageController extends Controller
             ];
         }
 
-        return view('game_views.course-points', compact('min_max','result_done'));
+        return view('game_views.course-points', compact('min_max', 'result_done'));
     }
 
-    public function statement_data():object
+    public function statement_data(): object
     {
         $financial_options = array_column(
             array_filter(Config::get('game.financialOption'), function ($key, $val) {
                 return $key['status'] == 1; //manually filter by status 1
-            }, ARRAY_FILTER_USE_BOTH), 'name');
+            }, ARRAY_FILTER_USE_BOTH),
+            'name'
+        );
 
 
         $records = DB::table('revenues')
@@ -192,7 +193,7 @@ class GamePageController extends Controller
             ->where(['revenues.game_id' => Session::get('game_id'), 'revenues.user_id' => Auth::guard('web')->user()->id])
             ->get();
         // dd($records);
-        $revenue = array('A' =>0, 'B' => 0);
+        $revenue = array('A' => 0, 'B' => 0);
         if ($records->isNotEmpty()) {
             foreach ($records as $key => $val) {
                 $total = $val->revenue + $val->month2_revenue;
@@ -220,7 +221,44 @@ class GamePageController extends Controller
         // dd([$revenue, $total_budgeting, $recruitment_result]);
         $data_value = collect([$revenue, $total_budgeting, $recruitment_result])->flatten(); // arrange data value
 
-         return $result_object = collect($financial_options)->combine($data_value); // combine financial_option with data value
+        return $result_object = collect($financial_options)->combine($data_value); // combine financial_option with data value
 
+    }
+
+    public function financialStatement()
+    {
+        $f_result_array = $this->statement_data();
+        $financial_options = FinancialOptions::select(['title', 'value'])->whereStatus(0)->get();
+        $financial = FinancialStatement::where(['game_id' => Session::get('game_id'), 'user_id' => Auth::guard('web')->user()->id, 'session_id' => Session::getId()])->get()->first();
+
+        $f_revenueData = null;
+        $f_expensesData = null;
+        $f_total_revenue = 0;
+        $f_total_expenses = 0;
+        $f_total_income = 0;
+        $minus_options = [];
+        if (!is_null($financial)) {
+            $f_total_revenue = $financial->total_revenue;
+            $f_total_expenses = $financial->total_expanses;
+            $f_total_income = $f_total_revenue - $f_total_expenses;
+            $f_revenueData = FinancialStatementItems::where(['financial_id' => $financial->id, 'type' => 'revenue'])->get();
+            $f_expensesData = FinancialStatementItems::where(['financial_id' => $financial->id, 'type' => 'expenses'])->get();
+            $minus_options = $f_revenueData->pluck('title');
+            $minus_options = $minus_options->concat($f_expensesData->pluck('title'))->all();
+            //dd($minus_options);
+        }
+        $cashFlow_options = FinancialOptions::select(['title', 'value'])->get();
+        return view('game_views.financial-statement-new', [
+            'financial_options' => $financial_options,
+            'financial_minus_options' => $minus_options,
+            'financial_revenue_data' => $f_revenueData,
+            'financial_expenses_data' => $f_expensesData,
+            'financial_options_dynamic' => $f_result_array,
+            'financial_total_revenue' => $f_total_revenue,
+            'financial_total_expenses' => $f_total_expenses,
+            'financial_total_income' => $f_total_income,
+
+            'cashFlow_options' => $cashFlow_options
+        ]);
     }
 }

@@ -42,7 +42,6 @@ class AjaxRequestController extends Controller
                 $final_items->save();
             }
         }
-
     }
 
 
@@ -84,7 +83,7 @@ class AjaxRequestController extends Controller
 
     public function addCashFlow(Request $request)
     {
-         //dd ($request->dataId);
+        //dd ($request->dataId);
 
         $financial = CashFlowStatement::where(['game_id' => Session::get('game_id'), 'user_id' => Auth::guard('web')->user()->id, 'session_id' => Session::getId()])->get()->first();
 
@@ -119,4 +118,26 @@ class AjaxRequestController extends Controller
         }
     }
 
+    public function addFinancialData(Request $request)
+    {
+        $type = $request->type;
+        if ($type == 1) {
+            $this->addRevenue($request);
+        } elseif ($type == 2) {
+            $this->addExpenses($request);
+        }
+        return response()->json([
+            'status' => "success",
+            'msg' => 'Financial data added successfully',
+        ]);
+    }
+
+    public function addCashFlowData(Request $request)
+    {
+        $this->addCashFlow($request);
+        return response()->json([
+            'status' => "success",
+            'msg' => 'Cash Flow data added successfully',
+        ]);
+    }
 }

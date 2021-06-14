@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('revenue-np', [\App\Http\Controllers\GamePageController::class, 'revenue_np'])->name('revenue_np');
     Route::get('revenue-other', [\App\Http\Controllers\GamePageController::class, 'revenueOther'])->name('revenueOther');
     Route::get('financial-statements', [\App\Http\Controllers\GamePageController::class, 'financialStatements'])->name('financial-statements');
+    Route::get('financial-statement', [\App\Http\Controllers\GamePageController::class, 'financialStatement'])->name('financial-statement');
     Route::get('cash-flow-statements', [\App\Http\Controllers\GamePageController::class, 'cashFlowStatements'])->name('cash-flow-statements');
     Route::get('decision-driven', [\App\Http\Controllers\GamePageController::class, 'decisionDriven'])->name('decision-driven');
     Route::get('course-points', [\App\Http\Controllers\GamePageController::class, 'coursePoints'])->name('course-points');
@@ -72,6 +73,10 @@ Route::post('add-revenues', [\App\Http\Controllers\AjaxRequestController::class,
 Route::post('add-expenses', [\App\Http\Controllers\AjaxRequestController::class, 'addExpenses']);
 Route::post('add_cash_flow', [\App\Http\Controllers\AjaxRequestController::class, 'addCashFlow']);
 Route::post('add-cash-flow-expenses', [\App\Http\Controllers\AjaxRequestController::class, 'addCashFlowExpenses']);
+
+// Copy from Robin bhai
+Route::post('add-financial-data', [\App\Http\Controllers\AjaxRequestController::class, 'addFinancialData']);
+Route::post('add-cash-flow-data', [\App\Http\Controllers\AjaxRequestController::class, 'addCashFlowData']);
 // end game 1 all route
 $restaurant = \App\Models\Restaurant::get();
 Route::view('/demo', 'demo', ['options' => $restaurant]);
@@ -205,6 +210,6 @@ Route::group(['auth:sanctum', 'verified'], function () {
 
 
 //Delete later
-Route::get('/financial-statement', function () {
-    return view('financial_statement');
-})->name('financial-statement');
+// Route::get('/financial-statement', function () {
+//     return view('game_views.financial-statement-new');
+// })->name('financial-statement');
