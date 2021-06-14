@@ -247,7 +247,39 @@ class GamePageController extends Controller
             $minus_options = $minus_options->concat($f_expensesData->pluck('title'))->all();
             //dd($minus_options);
         }
+        // cash flow
         $cashFlow_options = FinancialOptions::select(['title', 'value'])->get();
+        $cashFlow = CashFlowStatement::where(['game_id' => Session::get('game_id'), 'user_id' => Auth::guard('web')->user()->id, 'session_id' => Session::getId()])->get()->first();
+
+        $c_revenueData = null;
+        $c_expensesData = null;
+        $c_total_revenue = 0;
+        $c_total_expenses = 0;
+        $c_total_income = 0;
+        $c_calculated_data = 0;
+        $c_minus_options = [];
+        $c_expenses_type = [
+            "operating_expenses" => 2,
+            "cash_to_suppliers" => 3,
+            "cash_for_interest" => 4,
+            "cash_for_taxes" => 5,
+        ];
+        if (!is_null($cashFlow)) {
+            $c_total_revenue = $cashFlow->total_revenue;
+            $c_total_expenses = $cashFlow->total_expanses;
+            $c_total_income = $c_total_revenue - $c_total_expenses;
+            $c_revenueData = CashFlowStatementItems::where(['cash_flow_statement_id' => $cashFlow->id, 'type' => 1])->get();
+            $c_expensesData = CashFlowStatementItems::where(['cash_flow_statement_id' => $cashFlow->id])->get();
+            $c_calculated_data = $c_expensesData->mapToGroups(function ($item, $key) {
+                return [$item->type => $item->value];
+            })->map(function ($item) {
+
+                return $item->sum();
+            });
+            $c_minus_options = $c_revenueData->pluck('title');
+            $c_minus_options = $c_minus_options->concat($c_expensesData->pluck('title'))->all();
+            //    return([$expensesData, $calculated_data]);
+        }
         return view('game_views.financial-statement-new', [
             'financial_options' => $financial_options,
             'financial_minus_options' => $minus_options,
@@ -258,7 +290,15 @@ class GamePageController extends Controller
             'financial_total_expenses' => $f_total_expenses,
             'financial_total_income' => $f_total_income,
 
-            'cashFlow_options' => $cashFlow_options
+            'cashFlow_options' => $cashFlow_options,
+            'cashFlow_minus_options' => $c_minus_options,
+            'cashFlow_revenue_data' => $c_revenueData,
+            'cashFlow_expenses_data' => $c_expensesData,
+            'cashFlow_expenses_type' => $c_expenses_type,
+            'cashFlow_total_revenue' => $c_total_revenue,
+            'cashFlow_total_expenses' => $c_total_expenses,
+            'cashFlow_total_income' => $c_total_income,
+            'cashFlow_calculate_data' => $c_calculated_data
         ]);
     }
 }
