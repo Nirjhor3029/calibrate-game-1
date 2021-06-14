@@ -5,16 +5,16 @@
 
         <livewire:decision-driven />
 
-        
+
 
         <div class="prev_next_div">
             <a href="" class="btn btn-game1 btn-next">
                 Previous
-                <img class="icon" src="{{ 'assets/images/icons/' }}/Previous.svg" alt="Previous icon">
+                <img class="icon" src="{{ asset('assets/images/icons') }}/Previous.svg" alt="Previous icon">
             </a>
             <a href="" class="btn btn-game1 btn-next">
                 Next
-                <img class="icon" src="{{ 'assets/images/icons/' }}/Next.svg" alt="Next icon">
+                <img class="icon" src="{{ asset('assets/images/icons') }}/Next.svg" alt="Next icon">
             </a>
         </div>
 
