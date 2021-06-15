@@ -273,7 +273,6 @@ class GamePageController extends Controller
             $c_calculated_data = $c_expensesData->mapToGroups(function ($item, $key) {
                 return [$item->type => $item->value];
             })->map(function ($item) {
-
                 return $item->sum();
             });
             $c_minus_options = $c_revenueData->pluck('title');

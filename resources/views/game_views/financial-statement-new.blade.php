@@ -439,7 +439,7 @@
                     let data = processData(index_id);
                     let totalData = calculateData(data_id, data.total);
                     sendCashFlowData(data_id, index_id, data.result, totalData);
-                    $("#cashFlow_total_revenue").html("BDT " +totalData.revenue);
+                    $("#cashFlow_total_revenue").html("BDT " + totalData.revenue);
                     $("#cashFlow_total_expenses").html("BDT " + totalData.expense);
                     $("#net_income").html("BDT " + totalData.total);
 
