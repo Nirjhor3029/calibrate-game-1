@@ -83,7 +83,8 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="{{ route('overview') }}">
+                    <a class="{{ request()->routeIs('course-points') ? 'nav_item_active' : '' }}"
+                        href="{{ route('course-points') }}">
                         Course Points
                     </a>
                 </li>

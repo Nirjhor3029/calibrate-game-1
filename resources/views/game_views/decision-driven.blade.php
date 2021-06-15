@@ -12,7 +12,7 @@
                 Previous
                 <img class="icon" src="{{ asset('assets/images/icons') }}/previous.svg" alt="Previous icon">
             </a>
-            <a href="{{ URL::to('/overview') }}" class="btn btn-game1 btn-next">
+            <a href="{{ URL::to('/course-points') }}" class="btn btn-game1 btn-next">
                 Next
                 <img class="icon" src="{{ asset('assets/images/icons') }}/Next.svg" alt="Next icon">
             </a>
