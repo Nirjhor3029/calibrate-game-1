@@ -36,6 +36,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+    {{-- Google Nalytics test --}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-20L0R0HX6M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-20L0R0HX6M');
+
+    </script>
+
 </head>
 
 <body>
